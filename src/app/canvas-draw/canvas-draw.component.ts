@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer } from '@angular/core';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-canvas-draw',
@@ -7,16 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CanvasDrawComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('myCanvas',{ static: true }) canvas: any;
+
+  canvasElement: any;
+  lastX: number;
+  lastY: number;
+
+  currentColour: string = '#1abc9c';
+  brushSize: number = 10;
+
+  constructor(public platform: Platform, public renderer: Renderer) { 
+      console.log('Hello CanvasDraw Component');
+   }
 
   ngOnInit() {}
+
+  ngAfterViewInit() {
+    
+  }
 
   handleStart(ev) {
 
   }
 
   handleMove(ev) {
-    
+
   }
 
 }
