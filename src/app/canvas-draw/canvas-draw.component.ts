@@ -15,10 +15,19 @@ export class CanvasDrawComponent implements OnInit {
   lastY: number;
 
   currentColour: string = '#1abc9c';
+  avaliableColours: any;
+
   brushSize: number = 10;
 
   constructor(public platform: Platform, public renderer: Renderer) { 
       console.log('Hello CanvasDraw Component');
+
+      this.avaliableColours = [
+        '#1abc9c',
+        '#3498db',
+        '#9b59b6',
+        '#e74c3c'
+      ];
    }
 
   ngOnInit() {}
@@ -29,6 +38,14 @@ export class CanvasDrawComponent implements OnInit {
 
     this.renderer.setElementAttribute(this.canvasElement, 'width', this.platform.width() + '');
     this.renderer.setElementAttribute(this.canvasElement, 'height', this.platform.height() + '');
+  }
+
+  changeColour(colour){
+    this.currentColour = colour;
+  }
+
+  changeSize(size){
+    this.brushSize = size;
   }
 
   handleStart(ev) {
