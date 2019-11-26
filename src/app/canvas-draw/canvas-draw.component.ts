@@ -11,4 +11,12 @@ export class CanvasDrawComponent implements OnInit {
 
   ngOnInit() {}
 
+  handleStart(ev) {
+
+  }
+
+  handleMove(ev) {
+    
+  }
+
 }
