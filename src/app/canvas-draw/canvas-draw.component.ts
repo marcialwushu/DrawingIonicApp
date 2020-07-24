@@ -80,4 +80,31 @@ export class CanvasDrawComponent implements OnInit {
     ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
   }
 
+  saveCanvaImage(){
+    var dataUrl = this.canvasElement.toDataURL();
+    console.log('data: ', dataUrl);
+  }
+
+  b64toBlob(b64Data, contentType) {
+    contentType = contentType || '';
+    var sliceSize = 512;
+    var byteCharacteres = atob(b64Data);
+    var byteArrays = [];
+
+    for (var offset = 0; offset < byteCharacteres.length; offset += sliceSize ){
+        var slice = byteCharacteres.slice(offset, offset + sliceSize);
+
+        var byteNumbers = new Array(slice.length);
+        for (var i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+        }
+
+        var byteArray = new Uint8Array(byteNumbers);
+
+        byteArrays.push(byteArray);
+    }
+    var blob = new Blob(byteArrays, { type: contentType });
+    return blob;
+  }
+
 }
