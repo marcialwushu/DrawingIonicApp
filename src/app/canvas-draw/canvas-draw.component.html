@@ -12,6 +12,7 @@
 </ion-toolbar>
 
 <canvas #myCanvas (touchstart)="handleStart($event)" (touchmove)="handleMove($event)"></canvas>
+<ion-button expand="full" (click)="saveCanvaImage()">Save Image</ion-button>
 
 <ion-toolbar id="bottom-toolbar">
   <ion-buttons left>
